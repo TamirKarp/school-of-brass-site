@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School of Brass | A learning home for brass band players</title>
+<meta name="description" content="A learning platform for brass band players: filmed lessons from top-seat players, structured courses, built for the phone. Take the survey and help shape it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0F1729;
+    --primary-soft: #1B2A4A;
+    --accent: #C9A24C;
+    --accent-soft: #E6CB8B;
+    --bg: #FAFAF6;
+    --card-bg: #FFFFFF;
+    --text: #1A1A1A;
+    --text-soft: #555555;
+    --border: #E5E5E0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+  }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(250, 250, 246, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 1rem 2rem;
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  /* Hero */
+  .hero {
+    max-width: 1200px;
+    width: calc(100% - 4rem);
+    margin: 0 auto;
+    padding: 6rem 0 5rem;
+  }
+
+  .hero-content { max-width: 820px; }
+
+  .hero-content h1 {
+    font-size: 3.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+    color: var(--text-soft);
+    margin-bottom: 2rem;
+    max-width: 560px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.95rem 1.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: background 0.2s;
+  }
+
+  .btn:hover { background: var(--primary-soft); }
+
+  /* Sections */
+  section {
+    padding: 5rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 720px;
+  }
+
+  .section-body {
+    max-width: 680px;
+    color: var(--text-soft);
+    font-size: 1.1rem;
+  }
+
+  /* Problem section */
+  .problem {
+    background: var(--primary);
+    color: white;
+  }
+
+  .problem .section-title { color: white; }
+  .problem .section-eyebrow { color: var(--accent-soft); }
+  .problem .section-body { color: rgba(255, 255, 255, 0.78); }
+
+  /* Features grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: all 0.25s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(15, 23, 41, 0.08);
+    border-color: var(--accent);
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+  }
+
+  .feature-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+
+  .feature-card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+  }
+
+  /* Personas */
+  .personas {
+    margin-top: 3rem;
+  }
+
+  .persona-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .persona-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: all 0.25s;
+  }
+
+  .persona-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .persona-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .persona-tag {
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .persona-card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+  }
+
+  /* Model */
+  .model {
+    background: #F4F1E8;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .timeline-item {
+    background: var(--card-bg);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem;
+    transition: all 0.25s;
+  }
+
+  .timeline-item:hover {
+    border-left-width: 6px;
+    padding-left: calc(1.5rem - 3px);
+  }
+
+  .timeline-date {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-event {
+    font-weight: 500;
+    color: var(--primary);
+    font-size: 1.05rem;
+  }
+
+  /* Asks block */
+  .asks-block {
+    padding: 4rem 2rem;
+  }
+
+  .asks {
+    background: var(--primary);
+    color: white;
+    padding: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .asks .section-title { color: white; }
+  .asks .section-eyebrow { color: var(--accent-soft); }
+
+  .asks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .ask-item {
+    border-top: 2px solid var(--accent);
+    padding-top: 1.5rem;
+  }
+
+  .ask-item h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--accent-soft);
+    margin-bottom: 0.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .ask-item p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--bg);
+    padding: 4rem 2rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 0.5rem 0 1rem;
+  }
+
+  .about p {
+    color: var(--text-soft);
+    margin-bottom: 1rem;
+    max-width: 600px;
+  }
+
+  .contact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+  }
+
+  .contact-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+
+  .contact-card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-card a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    word-break: break-all;
+  }
+
+  .contact-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { width: calc(100% - 3rem); padding: 3.5rem 0; }
+    .hero-content h1 { font-size: 2.6rem; }
+    .persona-cards { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .asks { padding: 2.5rem 1.5rem; }
+    .asks-block { padding: 2rem 1rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .section-title { font-size: 2rem; }
+    nav { padding: 0.75rem 1rem; }
+    .nav-links { gap: 1rem; font-size: 0.85rem; }
+    .nav-links a { font-size: 0.85rem; }
+  }
+
+  @media (max-width: 500px) {
+    .nav-links { display: none; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">School of Brass</a>
+    <ul class="nav-links">
+      <li><a href="#problem">Why</a></li>
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#people">Who it's for</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>A learning home for brass band players.</h1>
+    <p class="hero-tagline">Learn from players you'd queue to hear. Work your way up, course by course. For every player, of every background, wherever they live.</p>
+    <a class="btn" href="https://forms.gle/AdkUGRHLa3V4Hg37A">Take the two-minute survey</a>
+  </div>
+</section>
+
+<section id="problem" class="problem">
+  <div class="section-inner">
+    <div class="section-eyebrow">The problem</div>
+    <h2 class="section-title">Where you grow up shouldn't decide what you can learn.</h2>
+    <p class="section-body">The UK brass band tradition is a significant part of British cultural identity, built by <span style="white-space:nowrap">working-class</span> communities in industrial towns. It is under pressure, and the places that built it now have some of the thinnest opportunity in the country. Whether a young player gets a proper teacher, or any way into banding at all, depends almost entirely on geography and luck. The tradition needs a dependable way in.</p>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="section-inner">
+    <div class="section-eyebrow">What's on the platform</div>
+    <h2 class="section-title">Built for the way brass players actually learn.</h2>
+    <p class="section-body">A pathway in, not a destination. School of Brass meets players where they are, from first long notes to contest-day nerves, and points them toward the bands and teachers who can carry them further.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">1</div>
+        <h3>Technique courses</h3>
+        <p>Filmed lessons from top-seat players, covering every chair in the band.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">2</div>
+        <h3>Searchable library</h3>
+        <p>Stuck on triple tonguing? Search it and watch a top player break it down. Plus performances, interviews and the stories behind banding.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">3</div>
+        <h3>Section progression</h3>
+        <p>Everyone starts in 4th Section and climbs by completing courses, up through 3rd, 2nd and 1st to Championship. It measures your own learning journey, whether your band contests or not.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">4</div>
+        <h3>Legendary band pairing</h3>
+        <p>Reach Championship and wear the crest of a legend: Black Dyke, Grimethorpe, Brighouse, Fairey, Cory, Foden's.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">5</div>
+        <h3>Phone first design</h3>
+        <p>Ten minutes on the bus or a full Sunday session, it meets you there. Save your place, pick up anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">6</div>
+        <h3>Commissioned recordings</h3>
+        <p>Six top players filmed up close, plus a full band recorded with the conductor talking you through the performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="people">
+  <div class="section-inner">
+    <div class="section-eyebrow">Who it's for</div>
+    <h2 class="section-title">Two players. One platform built for both.</h2>
+
+    <div class="personas">
+      <div class="persona-cards">
+        <div class="persona-card">
+          <div class="persona-name">Ian</div>
+          <div class="persona-tag">11 years old, cornet, small English town</div>
+          <p>No one at home to drive the practice. He needs lessons that stretch him, on his phone, any time. School of Brass gives him a path to follow and heroes to chase.</p>
+        </div>
+        <div class="persona-card">
+          <div class="persona-name">Evelyn</div>
+          <div class="persona-tag">45 years old, head of year, returning after 27 years</div>
+          <p>The lip needs rebuilding, and the confidence with it. She wants expert help at her own pace, on her own terms. The platform gives her a route home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="model" class="model">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">Subscriber funded. Creator shared. Built to last.</h2>
+    <p class="section-body">Between £5 and £10 a month at launch, rising gently as the catalogue grows. A share of every subscription goes straight to the musicians who teach on it. The build is proposed for funding through an Arts Council England National Lottery Project Grant. From launch, banding funds its own.</p>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="section-inner">
+    <div class="section-eyebrow">Timeline</div>
+    <h2 class="section-title">From grant submission to launch.</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Summer 2026</div>
+        <div class="timeline-event">Arts Council England funding application</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Dec 2026 to Nov 2027</div>
+        <div class="timeline-event">Build and recording programme</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Autumn 2027</div>
+        <div class="timeline-event">Free beta with 50 to 100 players</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">January 2028</div>
+        <div class="timeline-event">Public launch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="asks-block">
+  <div class="asks">
+    <div class="section-eyebrow">Help shape it</div>
+    <h2 class="section-title">Built for the banding world. Shaped by the banding world.</h2>
+
+    <div class="asks-list">
+      <div class="ask-item">
+        <h4>Tell us what you think</h4>
+        <p>The two-minute survey asks how you learn now, what you'd want from this, and what would put you off. Honest answers are the useful ones.</p>
+      </div>
+      <div class="ask-item">
+        <h4>Spot who it's for</h4>
+        <p>If you can think of a type of player we've missed, or you know the young player or returner this is built for, we want to hear about it.</p>
+      </div>
+      <div class="ask-item">
+        <h4>Teach on it</h4>
+        <p>Tutors and players who'd like to contribute content earn a share of the subscription revenue their teaching generates.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 2.5rem; color: rgba(255,255,255,0.85); font-size: 1.05rem;">Take the two-minute survey: <a href="https://forms.gle/AdkUGRHLa3V4Hg37A" style="color: var(--accent-soft); font-weight: 600;">forms.gle/AdkUGRHLa3V4Hg37A</a></p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="about">
+      <div class="section-eyebrow">Who's behind it</div>
+      <div class="about-name">Tamir Karp</div>
+      <p>Cornet player, brought up in Jedburgh Brass Band, going on to NYBBS and Bon Accord Silver. Music teacher for ten years. School of Brass is my way of giving back to the tradition that shaped me.</p>
+    </div>
+    <div class="contact-card">
+      <h3>Get in touch</h3>
+      <p>Questions, ideas, or want to teach on it? The survey has room for all three, and a way to be kept up to date.</p>
+      <a href="https://forms.gle/AdkUGRHLa3V4Hg37A">Open the survey</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('section').forEach(s => {
+    s.classList.add('reveal');
+    observer.observe(s);
+  });
+</script>
+
+</body>
+</html>
